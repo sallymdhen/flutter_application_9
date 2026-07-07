@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/core/util/app_colors.dart';
 
 class ProductModel {
   final String title;
@@ -16,32 +15,28 @@ class ProductModel {
     this.isBestSeller = true,
   });
 
-  static List<ProductModel> getMockProducts() {
-    return [
-      ProductModel(
-        imagePath: "assets/images/tshirt1.png",
-        title: 'Programmer T-shirt',
-        price: '\$58.7',
-        colors: [AppColors.productRed, AppColors.blue],
-      ),
-      ProductModel(
-        imagePath: "assets/images/tshirt2.png",
-        title: 'Programmer T-shirt',
-        price: '\$37.8',
-        colors: [AppColors.blue, AppColors.productRed],
-      ),
-      ProductModel(
-        imagePath: "assets/images/tshirt4.png",
-        title: 'Programmer T-shirt',
-        price: '\$47.7',
-        colors: [AppColors.productBlue, AppColors.productLightBlue],
-      ),
-      ProductModel(
-        imagePath: "assets/images/tshirt3.png",
-        title: 'Programmer T-shirt',
-        price: '\$57.6',
-        colors: [AppColors.productTeal, AppColors.productPurple],
-      ),
-    ];
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      title: json['title'] ?? '',
+      price: json['price'] ?? '',
+      imagePath: json['imagePath'] ?? '',
+      isBestSeller: json['isBestSeller'] ?? true,
+      colors: (json['colors'] as List<dynamic>?)
+              ?.map((colorHex) => Color(int.parse(colorHex)))
+              .toList() ??
+          [],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'price': price,
+      'imagePath': imagePath,
+      'isBestSeller': isBestSeller,
+      'colors': colors
+          .map((color) => '0x${color.value.toRadixString(16).toUpperCase()}')
+          .toList(),
+    };
   }
 }
