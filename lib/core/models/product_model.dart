@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/core/util/app_colors.dart';
 
 class ProductModel {
+  final int? id;
   final String title;
   final String price;
   final List<Color> colors;
@@ -8,12 +10,26 @@ class ProductModel {
   final bool isBestSeller;
 
   ProductModel({
+    this.id,
     required this.title,
     required this.price,
     required this.colors,
     required this.imagePath,
     this.isBestSeller = true,
   });
+
+  factory ProductModel.fromApiJson(Map<String, dynamic> json) {
+    final double rate = (json['rating']?['rate'] ?? 0).toDouble();
+
+    return ProductModel(
+      id: json['id'],
+      title: json['title'] ?? '',
+      price: (json['price'] ?? 0).toString(),
+      imagePath: json['image'] ?? '',
+      isBestSeller: rate >= 4.0,
+      colors: const [AppColors.blackColor, AppColors.productTeal, AppColors.redColor],
+    );
+  }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
