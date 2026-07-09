@@ -27,7 +27,11 @@ class ProductModel {
       price: (json['price'] ?? 0).toString(),
       imagePath: json['image'] ?? '',
       isBestSeller: rate >= 4.0,
-      colors: const [AppColors.blackColor, AppColors.productTeal, AppColors.redColor],
+      colors: const [
+        AppColors.blackColor,
+        AppColors.productTeal,
+        AppColors.redColor
+      ],
     );
   }
 
