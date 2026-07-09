@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/core/util/app_colors.dart';
-import 'package:flutter_application_9/core/util/app_text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../../core/util/app_colors.dart';
+import '../../../core/util/app_text_style.dart';
 
-class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const FavoriteAppBar({super.key});
+class NotificationAppBar extends StatelessWidget {
+  const NotificationAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Container(
               height: 44.h,
               width: 44.w,
-              decoration: const BoxDecoration(
-                color: Color(0xFFF7F7F9),
+              decoration: BoxDecoration(
+                color: AppColors.lightGreyColor,
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -37,11 +38,8 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Text(
-            'Favourite',
-            style: AppTextStyle.appBarTitle.copyWith(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-            ),
+            'Notifications',
+            style: AppTextStyle.appBarTitle,
           ),
           Container(
             height: 44.h,
@@ -60,10 +58,13 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: InkWell(
               onTap: () {},
               borderRadius: BorderRadius.circular(40.r),
-              child: Icon(
-                Icons.favorite_border,
-                color: AppColors.blackColor,
-                size: 20.sp,
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/icon_delet.svg',
+                  width: 20.w,
+                  height: 20.h,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
@@ -71,7 +72,4 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(70.h);
 }
