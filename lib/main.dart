@@ -3,6 +3,8 @@ import 'package:flutter_application_9/core/app/app_routes.dart';
 import 'package:flutter_application_9/core/app/services/app_start_up_service.dart';
 import 'core/app/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:flutter_application_9/features/presentation/views/favorite_screen.dart';
+import 'core/util/app_colors.dart';
 
 
 void main() async {
@@ -27,23 +29,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (_, child){
       return MaterialApp(
+        title: 'Flutter Application',
+          theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.whiteColor,
+            useMaterial3: true,
+          ),
         initialRoute: initialRoute,
         onGenerateRoute: AppRouter.onGenerateRoute,
       );}
     );
   }
 }
-
-/*class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(
-        child: Text('Hello Flutter'),
-      ),
-    );
-  }
-}*/

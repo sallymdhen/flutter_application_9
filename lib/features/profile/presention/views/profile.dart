@@ -4,8 +4,8 @@ import 'package:flutter_application_9/core/service/api_service.dart' as ApiServi
 import 'package:flutter_application_9/core/util/app_colors.dart';
 import 'package:flutter_application_9/core/util/app_text_style.dart';
 import 'package:flutter_application_9/features/profile/presention/views/model/profile_model.dart';
-import 'package:flutter_application_9/widgets/custom_field.dart';
-import 'package:flutter_application_9/widgets/main_button.dart';
+import 'package:flutter_application_9/features/widgets/custom_field.dart';
+import 'package:flutter_application_9/features/widgets/main_button.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

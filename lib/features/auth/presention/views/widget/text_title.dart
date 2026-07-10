@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/core/util/app_fonts.dart';
-import 'package:flutter_application_9/widgets/text_boarding.dart';
+import 'package:flutter_application_9/features/widgets/text_boarding.dart';
 
 class TextTitle extends StatelessWidget {
     TextTitle({super.key,required this.title});

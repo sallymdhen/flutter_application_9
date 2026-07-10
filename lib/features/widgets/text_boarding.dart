@@ -8,7 +8,7 @@ class TextBoarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text,style: 
-                TextStyle(fontSize: 16,fontFamily: AppFonts.mainFont,
+                TextStyle(fontSize: 16,fontFamily: AppFonts.poppins,
                            fontWeight:FontWeight.w400,letterSpacing: 0,
                            color: AppColors.greyColor
                             ),) ;

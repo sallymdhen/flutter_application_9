@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_application_9/core/util/app_colors.dart';
 
 class ProductModel {
+  final int? id;
   final String title;
   final String price;
   final List<Color> colors;
@@ -9,16 +12,36 @@ class ProductModel {
   final String description;
 
   ProductModel({
+    this.id,
     required this.title,
     required this.price,
     required this.colors,
     required this.imagePath,
-    this.isBestSeller = true, 
+    this.isBestSeller = true,
     required this.description,
   });
 
+  factory ProductModel.fromApiJson(Map<String, dynamic> json) {
+    final double rate = (json['rating']?['rate'] ?? 0).toDouble();
+
+    return ProductModel(
+      id: json['id'],
+      title: json['title'] ?? '',
+      price: (json['price'] ?? 0).toString(),
+      imagePath: json['image'] ?? '',
+      isBestSeller: rate >= 4.0,
+      colors: const [
+        AppColors.blackColor,
+        AppColors.productTeal,
+        AppColors.redColor,
+      ],
+      description: json['description'] ?? '',
+    );
+  }
+
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+      id: json['id'],
       title: json['title'] ?? '',
       price: json['price'] ?? '',
       imagePath: json['imagePath'] ?? '',
@@ -26,15 +49,14 @@ class ProductModel {
       colors: (json['colors'] as List<dynamic>?)
               ?.map((colorHex) => Color(int.parse(colorHex)))
               .toList() ??
-          
           [],
-
-      description: json['description']??''    
+      description: json['description'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'price': price,
       'imagePath': imagePath,
@@ -43,7 +65,6 @@ class ProductModel {
           .map((color) => '0x${color.value.toRadixString(16).toUpperCase()}')
           .toList(),
       'description': description,
-    
     };
   }
 }

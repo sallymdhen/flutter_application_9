@@ -3,7 +3,7 @@ import 'package:flutter_application_9/core/models/product_model.dart';
 import 'package:flutter_application_9/core/util/app_colors.dart';
 import 'package:flutter_application_9/core/util/app_text_style.dart';
 import 'package:flutter_application_9/features/details/presention/views/widget/describtion_widget.dart';
-import 'package:flutter_application_9/widgets/main_button.dart';
+import 'package:flutter_application_9/features/widgets/main_button.dart';
 
 class Details extends StatefulWidget {
    Details({super.key,required this.product});

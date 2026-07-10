@@ -5,8 +5,8 @@ import 'package:flutter_application_9/features/auth/presention/views/auth_servic
 import 'package:flutter_application_9/features/auth/presention/views/widget/icon_back.dart';
 import 'package:flutter_application_9/features/auth/presention/views/widget/secondary_button.dart';
 import 'package:flutter_application_9/features/auth/presention/views/widget/text_title.dart';
-import 'package:flutter_application_9/widgets/custom_field.dart';
-import 'package:flutter_application_9/widgets/main_button.dart';
+import 'package:flutter_application_9/features/widgets/custom_field.dart';
+import 'package:flutter_application_9/features/widgets/main_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
