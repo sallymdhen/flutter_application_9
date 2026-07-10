@@ -32,6 +32,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
+  shared_preferences: ^2.5.5
+  http: ^1.6.0
+  flutter_screenutil: ^5.9.3
 
 
      
@@ -57,7 +60,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/font
+    - assets/font/
+    - assets/image/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -85,12 +89,18 @@ flutter:
        fonts:
          - asset: assets\font\Raleway-SemiBold.ttf
            weight: 600
+         - asset: assets\font\Raleway-Bold.ttf
+           weight: 700
+         - asset: assets\font\Raleway-Medium.ttf
+           weight: 500    
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
      - family: Poppins
        fonts:
          - asset: assets\font\Poppins-Regular.ttf
            weight: 400
+         - asset: assets\font\Poppins-Medium.ttf
+           weight: 500  
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
