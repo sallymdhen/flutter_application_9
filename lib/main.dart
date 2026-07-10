@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   
-  final initialRoute = AppRoutes.signIn;
+  final initialRoute = AppRoutes.notifications;
   // await AppStartupService.getInitialRoute();
 
   runApp(MyApp(initialRoute: initialRoute));

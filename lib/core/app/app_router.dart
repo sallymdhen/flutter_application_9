@@ -3,6 +3,8 @@ import 'package:flutter_application_9/features/auth/presention/views/register_vi
 import 'package:flutter_application_9/features/auth/presention/views/sing_in_view.dart';
 import 'package:flutter_application_9/core/app/app_routes.dart';
 import 'package:flutter_application_9/features/details/presention/views/details.dart';
+import 'package:flutter_application_9/features/presentation/views/favorite_screen.dart' show FavoriteManager, FavoriteScreen;
+import 'package:flutter_application_9/features/presentation/views/notification_screen.dart';
 import 'package:flutter_application_9/features/profile/presention/views/profile.dart';
 
 class AppRouter {
@@ -35,10 +37,10 @@ class AppRouter {
       
       //case AppRoutes.details:
         //return MaterialPageRoute(builder: (_) => const Details(product: ,));
-      //case AppRoutes.favourite:
-        //return MaterialPageRoute(builder: (_) => const FavouriteScreen());
-      //case AppRoutes.notifications:
-        //return MaterialPageRoute(builder: (_) => const NotificationsScreen());
+      case AppRoutes.favourite:
+        return MaterialPageRoute(builder: (_) => const FavoriteScreen());
+      case AppRoutes.notifications:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
       case AppRoutes.profile:
         return MaterialPageRoute(builder: (_) => const Profile());
       //case AppRoutes.search:
