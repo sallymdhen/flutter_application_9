@@ -10,6 +10,6 @@ class AppStartupService {
       return AppRoutes.home;
     }
 
-    return AppRoutes.onboard1;
+    return AppRoutes.onboarding;
   }
 }

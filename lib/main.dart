@@ -9,18 +9,14 @@ import 'core/util/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  final initialRoute = await AppStartupService.getInitialRoute();
   
-  final initialRoute = AppRoutes.notifications;
-  // await AppStartupService.getInitialRoute();
-
   runApp(MyApp(initialRoute: initialRoute));
 }
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
-
-  const MyApp({super.key, required this.initialRoute});
+ const MyApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +26,9 @@ class MyApp extends StatelessWidget {
       builder: (_, child){
       return MaterialApp(
         title: 'Flutter Application',
+         debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            scaffoldBackgroundColor: AppColors.whiteColor,
+            scaffoldBackgroundColor: AppColors.backgroundLight,
             useMaterial3: true,
           ),
         initialRoute: initialRoute,

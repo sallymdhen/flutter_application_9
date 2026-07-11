@@ -20,7 +20,7 @@ class FavoriteAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {  Navigator.pop(context);},
             borderRadius: BorderRadius.circular(40.r),
             child: Container(
               height: 44.h,

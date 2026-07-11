@@ -36,11 +36,14 @@ class ProductModel {
         AppColors.redColor,
       ],
       description: json['description'] ?? '',
+
+     
     );
   }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+
       id: json['id'],
       title: json['title'] ?? '',
       price: json['price'] ?? '',
@@ -51,11 +54,13 @@ class ProductModel {
               .toList() ??
           [],
       description: json['description'] ?? '',
+
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+
       'id': id,
       'title': title,
       'price': price,

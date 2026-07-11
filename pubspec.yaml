@@ -10,13 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
 
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.5.5
   http: ^1.6.0
   flutter_svg: ^2.2.3
   flutter_screenutil: ^5.9.3
+  flutter_slidable: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -24,13 +24,14 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
+
   uses-material-design: true
 
   assets:
     - assets/font/
+    - assets/images_svg/
+    - assets/icons/
     - assets/image/
-    - assets/images/
-    
 
   fonts:
     - family: Raleway
@@ -48,4 +49,8 @@ flutter:
           weight: 400
         - asset: assets/font/Poppins-Medium.ttf
           weight: 500
-       
+
+    - family: Jost
+      fonts:
+        - asset: assets/font/Jost-Black.ttf
+          weight: 900

@@ -1,5 +1,6 @@
 class AppRoutes {
 //////لا تخربطوا هاد بيجمع اسماء السكرينات كلها يلي عندي بالكود
+  static const String onboarding = '/onboarding';
   static const String onboard1 = '/onboard1';
   static const String onboard2 = '/onboard2';
   static const String onboard3 = '/onboard3';
@@ -13,7 +14,6 @@ class AppRoutes {
   static const String sideMenu = '/sideMenu';
   static const String profile = '/profile';
   static const String search = '/search';
-
 
 
 

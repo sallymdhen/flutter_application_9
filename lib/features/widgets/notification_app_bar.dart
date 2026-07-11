@@ -21,7 +21,7 @@ class NotificationAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {Navigator.pop(context);},
             borderRadius: BorderRadius.circular(40.r),
             child: Container(
               height: 44.h,
@@ -60,7 +60,8 @@ class NotificationAppBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(40.r),
               child: Center(
                 child: SvgPicture.asset(
-                  'assets/images/icon_delet.svg',
+                  'assets/images_svg/icon_delet.svg',
+                 
                   width: 20.w,
                   height: 20.h,
                   fit: BoxFit.contain,

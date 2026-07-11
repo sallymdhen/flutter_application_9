@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/core/app/app_routes.dart';
 import 'package:flutter_application_9/core/models/product_model.dart';
 import 'package:flutter_application_9/core/util/app_colors.dart';
 import 'package:flutter_application_9/core/util/app_text_style.dart';
 import 'package:flutter_application_9/features/details/presention/views/widget/describtion_widget.dart';
+import 'package:flutter_application_9/features/home/presention/views/cart_screen.dart';
+import 'package:flutter_application_9/features/home/presention/views/favorite_screen.dart';
+import 'package:flutter_application_9/features/home/presention/widgets/cart_item_card.dart';
 import 'package:flutter_application_9/features/widgets/main_button.dart';
+import 'package:flutter_application_9/core/service/cart/manager_cart.dart';
+
 
 class Details extends StatefulWidget {
    Details({super.key,required this.product});
@@ -19,17 +25,17 @@ class _DetailsState extends State<Details> {
   @override
 void initState() {
   super.initState();//;هي اسم الليست يلي بدي ضيف عليه 
- //sFavorite = favoriteProducts.contains(widget.product);
+
 }
 
  
  bool isFavorite = false;
 final List<String> images = [
-  'assets/image/image_1.png',
-  'assets/image/image_2.png',
-  'assets/image/image_3.png',
-  'assets/image/image_4.png',
-  'assets/image/image_5.png',
+  'assets/image/tshirt1.png',
+  'assets/image/tshirt2.png',
+  'assets/image/tshirt3.png',
+  'assets/image/tshirt4.png',
+  'assets/image/tshirt2.png',
 ];
 bool isOnApiImage = true;
 int currentIndex = 0;
@@ -39,7 +45,7 @@ int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: AppColors.backgroundLight,
       leading: Container(width: 47,height: 47,
                           margin: EdgeInsets.all(8),
                           decoration: BoxDecoration(
@@ -53,12 +59,18 @@ int currentIndex = 0;
  
       title: Text('T-shirt Shop',style: AppTextStyle.appBarScreensStyle,),centerTitle: true,
       actions: [
-                 Stack(children: [Container(
-                                         height:44 ,width: 44,padding: EdgeInsets.all(10), 
-                                         decoration: BoxDecoration(color: AppColors.whiteColor,
-                                                                  shape: BoxShape.circle ), 
-                                         child: Image.asset('assets/image/bag.png',width:24 ,height:24 ,),),
-                                  Positioned(right: 0,top: 0,
+                 Stack(children: [InkWell(onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CartScreen()));
+                 },
+                   child: Container(margin: EdgeInsets.all(8),
+                                           height:44 ,width: 44,padding: EdgeInsets.all(10), 
+                                           decoration: BoxDecoration(color: AppColors.whiteColor,
+                                                                    shape: BoxShape.circle ), 
+                                           child: Image.asset('assets/image/bag.png',width:24 ,height:24 ,),),
+                 ),
+                                  Positioned(right: 9,top: 9,
                                     child: Container(height:8 ,width: 8,decoration: 
                                   BoxDecoration(shape: BoxShape.circle,
                                                color: AppColors.redColor),))     
@@ -93,7 +105,7 @@ int currentIndex = 0;
             Center(
   child: isOnApiImage
       ? Image.network(
-          "widget.product.imagePath",
+          widget.product.imagePath,
           width: 215,
           height: 220,
           fit: BoxFit.contain,
@@ -212,22 +224,7 @@ int currentIndex = 0;
     ],
   ),
 ),
-                      
-                       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -245,14 +242,16 @@ int currentIndex = 0;
                                      decoration: BoxDecoration(color: AppColors.whiteColor,
                                                               shape: BoxShape.circle ), 
                                      child: IconButton(onPressed: (){
-                                     /* setState(() {
+                                      
+                                     setState(() {
                                                if (isFavorite) {
         // هي لحتى احذف من المفضلة 
-                                                 favoriteProducts.remove(widget.product);
+                                                 FavoriteManager.favoriteProducts.remove(widget.product);
+                                                 
                                                 isFavorite = false; }
                                                  else {
         // وهي منشان ضيف للمفضلة
-                                                  favoriteProducts.add(widget.product);
+                                                  FavoriteManager.favoriteProducts.add(widget.product);
                                                    isFavorite = true;
                                                        }});
 
@@ -262,13 +261,31 @@ int currentIndex = 0;
                                                                                              : "تمت إزالة المنتج من المفضلة", ),), );
 
 
-                                    */ }, icon: Icon(Icons.favorite))),
+                                    }, icon: Icon(Icons.favorite,
+                                    color: isFavorite?AppColors.favoriteRed:AppColors.lightGreyColor,
+                                    
+                                    ))),
                                      SizedBox(width: 45,),
-                                     MainButton(onPressed: (){
+                                     MainButton(
+                                      onPressed: () {
+                                            CartManager.cartItems.add({
+                                            'id': DateTime.now().millisecondsSinceEpoch.toString(),
+                                            'name': widget.product.title,
+                                            'imagePath': widget.product.imagePath,
+                                            'price': double.parse(widget.product.price),
+                                            'quantity': 1,});
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text("تمت إضافة المنتج إلى السلة"),
+    ),
+  );
+},
                                        
-                                                            }, 
+                                     
+                                                            
                                                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
+                                                children: [
                                                   Icon(Icons.shopping_bag, color: Colors.white),
                                                   SizedBox(width: 6,),
                                                   Text('Add TO Cart',style: AppTextStyle.logRegStyle,),

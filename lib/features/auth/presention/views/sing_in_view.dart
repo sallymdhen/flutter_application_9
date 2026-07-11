@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_9/core/app/app_routes.dart';
+import 'package:flutter_application_9/core/app/services/app_token_service.dart';
 import 'package:flutter_application_9/core/util/app_text_style.dart';
 import 'package:flutter_application_9/features/auth/presention/views/auth_service/auth_service.dart';
 import 'package:flutter_application_9/features/auth/presention/views/widget/icon_back.dart';
@@ -118,8 +119,9 @@ class _SignInScreenState extends State<SignInScreen> {
       );
 
       if (user != null) {
-       //  await AuthService.saveUser(user); //احفظلي الداتا
-        Navigator.pushReplacementNamed(context, AppRoutes.profile);
+        await TokenService.saveToken(user.accessToken);
+       
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('خطأ في تسجيل الدخول')),

@@ -35,7 +35,7 @@ class _ProfileState extends State<Profile> {
 
 
 
-    profile = await ApiService.getProfile(1, token!);
+    profile = await ApiService.getProfile(1);
 
     if (profile != null) {
       nameController.text =
@@ -51,8 +51,19 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.backgroundLight,
         title: Text('Profile', style: AppTextStyle.titleProfileStyle),
         centerTitle: true,
+        leading: Container(width: 47,height: 47,
+                          margin: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.whiteColor,),
+                          child: IconButton(
+                         icon: Icon(Icons.arrow_back_ios , color: Colors.black,size: 15,),
+                         onPressed: () {
+                         Navigator.pop(context);
+                                        }, ),),
       ),
 
       body: Padding(
@@ -62,14 +73,14 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-             
+              SizedBox(height: 40,),
               Center(
                 child: Stack(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.asset(
-                        'assets/image/my_photo.jpg',
+                        'assets/image/user_profile.png',
                         width: 80,
                         height: 80,
                         fit: BoxFit.cover,

@@ -1,10 +1,10 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_9/core/util/app_colors.dart';
-import 'package:flutter_application_9/core/util/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_9/core/util/responsive_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'app_colors.dart';
+import 'app_fonts.dart';
+
 
 
 class AppTextStyle {
@@ -173,6 +173,25 @@ class AppTextStyle {
     fontSize: 15.sp,
     fontWeight: FontWeight.w600,
   );    
-}
 
+  static const TextStyle greenLabel = TextStyle(
+    fontFamily: AppFonts.poppins,
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+    color: AppColors.primaryGreen,
+  );
+
+static TextStyle menuUserName(BuildContext context) => TextStyle(
+      fontFamily: AppFonts.raleway,
+      fontWeight: FontWeight.w500,
+      fontSize: scale(context, 20),
+      color: AppColors.whiteColor, 
+    );
+static TextStyle menuItemText(BuildContext context) => TextStyle(
+      fontFamily: AppFonts.raleway,
+      fontWeight: FontWeight.w500,
+      fontSize: scale(context, 16), 
+      color: AppColors.whiteColor,
+    );
+  }
 
